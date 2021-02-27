@@ -55,12 +55,7 @@ public class ClienteResourceTest {
   @Test
   void deveRetornar200QuandoAtualizarCliente() throws Exception {
 
-    Cliente cliente = new Cliente();
-    cliente.setId(999);
-    cliente.setNomeCompleto("ALEX UPDATE");
-
-    mockMvc.perform(put("/clientes")
-        .content(new ObjectMapper().writeValueAsString(ClienteDTO.toDto(cliente)))
+    mockMvc.perform(put("/clientes/999/nome/ALEX UPDATE")
         .contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
         .andDo(print());

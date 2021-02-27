@@ -59,17 +59,10 @@ public class ClienteServiceTests {
   @Order(2)
   public void deveAtualizarCliente() {
 
-    final ClienteDTO cliente = clienteService.buscarPorId(999);
-
-    cliente.setNomeCompleto("ALEX");
-    cliente.setIdade(40);
-
-    final ClienteDTO atualizar = clienteService.atualizar(cliente);
+    final ClienteDTO atualizar = clienteService.atualizar(999, "ALEX");
 
     Assertions.assertNotNull(atualizar);
     Assertions.assertEquals(atualizar.getNomeCompleto(), "ALEX");
-    Assertions.assertNotEquals(atualizar.getIdade(), 40);
-
   }
 
   @Test
@@ -92,13 +85,8 @@ public class ClienteServiceTests {
   @Test
   public void deveGerarExceptionAoAtualizarClienteInexistente() {
 
-    final ClienteDTO cliente = new ClienteDTO();
-
-    cliente.setId(666);
-    cliente.setNomeCompleto("ALEX");
-
     Assertions.assertThrows(ClienteNaoEncontradoException.class, () -> {
-      clienteService.atualizar(cliente);
+      clienteService.atualizar(666, "ALEX");
     });
   }
 

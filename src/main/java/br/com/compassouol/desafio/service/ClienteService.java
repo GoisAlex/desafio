@@ -22,14 +22,12 @@ public class ClienteService {
     return ClienteDTO.toDto(save);
   }
 
-  public ClienteDTO atualizar(ClienteDTO cliente) {
+  public ClienteDTO atualizar(Integer id, String nome) {
 
-    final Cliente clienteBD = clienteRepository.findById(cliente.getId())
-        .orElseThrow(() -> new ClienteNaoEncontradoException(cliente.getId().toString()));
+    final Cliente clienteBD = clienteRepository.findById(id)
+        .orElseThrow(() -> new ClienteNaoEncontradoException(id.toString()));
 
-    BeanUtils
-        .copyProperties(ClienteDTO.toObject(cliente), clienteBD, "id", "idade", "dataNascimento",
-            "sexo", "cidade");
+    clienteBD.setNomeCompleto(nome);
 
     return ClienteDTO.toDto(clienteRepository.save(clienteBD));
   }

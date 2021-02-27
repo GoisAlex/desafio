@@ -31,9 +31,9 @@ public class ClienteResource {
     return ResponseEntity.created(new URI("/clientes/" + cadastrar.getId())).body(cadastrar);
   }
 
-  @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<ClienteDTO> atualizar(@RequestBody ClienteDTO cliente) {
-    return ResponseEntity.ok().body(clienteService.atualizar(cliente));
+  @PutMapping(value = "/{id}/nome/{nome}",produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<ClienteDTO> atualizar(@PathVariable Integer id, @PathVariable String nome) {
+    return ResponseEntity.ok().body(clienteService.atualizar(id, nome));
   }
 
   @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
