@@ -20,6 +20,6 @@ public class CustomRepositoryImpl<T, ID extends Serializable>
   @Override
   @Transactional
   public void refresh(T t) {
-    entityManager.refresh(t);
+    entityManager.refresh(entityManager.merge(t));
   }
 }

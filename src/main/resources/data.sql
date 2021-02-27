@@ -1,7 +1,7 @@
 delete
-from cidade;
-delete
 from cliente;
+delete
+from cidade;
 insert into cidade(cidade_id, nome, estado)
 values (cidade_sequence.NEXTVAL, 'Cuiabá', 'MATO_GROSSO');
 insert into cidade(cidade_id, nome, estado)

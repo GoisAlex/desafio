@@ -1,6 +1,7 @@
 package br.com.compassouol.desafio.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -20,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = Cliente.TABELA_NOME)
 @SequenceGenerator(name = "cliente_sequence", sequenceName = "cliente_sequence", allocationSize = 1)
-public class Cliente {
+public class Cliente implements Serializable {
 
   public static final String TABELA_NOME = "cliente";
 

@@ -1,6 +1,7 @@
 package br.com.compassouol.desafio.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -18,7 +19,7 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = Cidade.TABELA_NOME)
 @SequenceGenerator(name = "cidade_sequence", sequenceName = "cidade_sequence", allocationSize = 1)
-public class Cidade {
+public class Cidade implements Serializable {
 
   public static final String TABELA_NOME = "cidade";
 
