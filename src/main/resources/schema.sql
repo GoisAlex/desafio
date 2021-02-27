@@ -16,7 +16,8 @@ create table if not exists public.cliente
     idade           integer,
     data_nascimento date,
     cidade_id       integer,
-    primary key (cliente_id)
+    primary key (cliente_id),
+    foreign key (cidade_id) REFERENCES cidade (cidade_id)
 );
 
 

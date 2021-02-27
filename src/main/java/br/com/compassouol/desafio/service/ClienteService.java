@@ -17,7 +17,9 @@ public class ClienteService {
   private ClienteRepository clienteRepository;
 
   public ClienteDTO cadastrar(ClienteDTO cliente) {
-    return ClienteDTO.toDto(clienteRepository.save(ClienteDTO.toObject(cliente)));
+    final Cliente save = clienteRepository.save(ClienteDTO.toObject(cliente));
+    clienteRepository.refresh(save);
+    return ClienteDTO.toDto(save);
   }
 
   public ClienteDTO atualizar(ClienteDTO cliente) {
@@ -48,4 +50,5 @@ public class ClienteService {
   private List<ClienteDTO> converterParaDTO(List<Cliente> clientes) {
     return clientes.stream().map(c -> ClienteDTO.toDto(c)).collect(Collectors.toList());
   }
+
 }

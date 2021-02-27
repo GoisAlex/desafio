@@ -14,6 +14,22 @@ public class ApiError {
   private List<String> erros;
   private String detalhes;
 
+  public LocalDateTime getData() {
+    return data;
+  }
+
+  public String getMensagem() {
+    return mensagem;
+  }
+
+  public List<String> getErros() {
+    return erros;
+  }
+
+  public String getDetalhes() {
+    return detalhes;
+  }
+
   public static class Builder {
 
     private LocalDateTime data;

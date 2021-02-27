@@ -92,6 +92,7 @@ public class ClienteDTO {
     cliente.setId(clienteDTO.id);
     cliente.setNomeCompleto(clienteDTO.nomeCompleto);
     cliente.setSexo(Sexo.porDescricao(clienteDTO.sexo));
+    cliente.setIdade(clienteDTO.idade);
     if (StringUtils.hasText(clienteDTO.dataNascimento)) {
       cliente.setDataNascimento(LocalDate.parse(clienteDTO.dataNascimento));
     }

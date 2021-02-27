@@ -1,5 +1,7 @@
 package br.com.compassouol.desafio.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +10,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = Cidade.TABELA_NOME)
@@ -29,6 +33,11 @@ public class Cidade {
   @Enumerated(value = EnumType.STRING)
   @Column(name = "estado", length = 20)
   private Estado estado;
+
+  @Transient
+  @JsonIgnore
+  @OneToMany(mappedBy = "cidade")
+  private List<Cliente> clientes;
 
   public Cidade() {
   }
